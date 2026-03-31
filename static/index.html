@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encar — Korean Cars</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo">🚗 EncarAuto</div>
+      <p class="hero-sub">Premium Korean Cars · Updated Daily</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="toolbar">
+      <input id="search" type="text" placeholder="Search by brand or model…" />
+      <span id="count" class="count"></span>
+    </div>
+
+    <div id="grid" class="grid">
+      <div class="skeleton-wrap" id="skeletons"></div>
+    </div>
+
+    <p id="error" class="error hidden"></p>
+  </main>
+
+  <footer class="footer">
+    <p>Data sourced from <a href="https://www.encar.com" target="_blank">encar.com</a></p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

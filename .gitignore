@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+cars.json
+server.log
+1.txt
+2.txt
