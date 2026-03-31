@@ -16,6 +16,20 @@ HEADERS = {
 
 BASE_URL = "https://api.encar.com/search/car/list/general"
 
+MANUFACTURER_MAP = {
+    "현대": "Hyundai", "기아": "Kia", "제네시스": "Genesis",
+    "쉐보레(GM대우)": "Chevrolet", "르노코리아(삼성)": "Renault Korea",
+    "KG모빌리티(쌍용)": "KG Mobility", "벤츠": "Mercedes-Benz",
+    "BMW": "BMW", "아우디": "Audi", "폭스바겐": "Volkswagen",
+    "볼보": "Volvo", "포르쉐": "Porsche", "렉서스": "Lexus",
+    "토요타": "Toyota", "혼다": "Honda", "닛산": "Nissan",
+    "랜드로버": "Land Rover", "재규어": "Jaguar", "벤틀리": "Bentley",
+    "페라리": "Ferrari", "람보르기니": "Lamborghini", "마세라티": "Maserati",
+    "미니": "MINI", "푸조": "Peugeot", "시트로엥": "Citroën",
+    "링컨": "Lincoln", "캐딜락": "Cadillac", "지프": "Jeep",
+    "포드": "Ford", "테슬라": "Tesla", "인피니티": "Infiniti",
+}
+
 # CarType.A = Korean domestic, CarType.Y = imported
 QUERIES = ["(And.CarType.A.)", "(And.CarType.Y.)"]
 
@@ -90,14 +104,15 @@ def parse_car(item):
             if loc:
                 photo = f"https://ci.encar.com{loc}"
 
-        name = f"{manufacturer} {model}"
+        manufacturer_en = MANUFACTURER_MAP.get(manufacturer, manufacturer)
+        name = f"{manufacturer_en} {model}"
         if badge:
             name += f" {badge}"
 
         return {
             "id": car_id,
             "name": name.strip(),
-            "manufacturer": manufacturer,
+            "manufacturer": manufacturer_en,
             "model": model,
             "year": year,
             "mileage": mileage,
